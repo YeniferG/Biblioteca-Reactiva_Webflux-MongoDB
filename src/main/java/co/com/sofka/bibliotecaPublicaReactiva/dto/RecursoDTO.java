@@ -4,6 +4,7 @@ import co.com.sofka.bibliotecaPublicaReactiva.utils.AreaTematica;
 import co.com.sofka.bibliotecaPublicaReactiva.utils.Tipo;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class RecursoDTO {
 
@@ -77,5 +78,30 @@ public class RecursoDTO {
 
     public void setAreaTematica(AreaTematica areaTematica) {
         this.areaTematica = areaTematica;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RecursoDTO that = (RecursoDTO) o;
+        return isDisponible == that.isDisponible && Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(fechaPrestamo, that.fechaPrestamo) && tipo == that.tipo && areaTematica == that.areaTematica;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, isDisponible, fechaPrestamo, tipo, areaTematica);
+    }
+
+    @Override
+    public String toString() {
+        return "RecursoDTO{" +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", isDisponible=" + isDisponible +
+                ", fechaPrestamo=" + fechaPrestamo +
+                ", tipo=" + tipo +
+                ", areaTematica=" + areaTematica +
+                '}';
     }
 }
